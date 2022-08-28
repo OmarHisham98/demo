@@ -14,7 +14,7 @@ public class StudentController {
 
     private final StudentService studentService;
 
-    @Autowired
+    @Autowired  //the upper private final StudentService is autowired to resolve deoendency injection in the below method,that's why we used @Service (like @Component or @Bean, but @Service is better for readability) over the StudentService class
     public StudentController(StudentService studentService) {
         this.studentService = studentService;
     }
