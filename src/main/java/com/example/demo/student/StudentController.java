@@ -10,11 +10,11 @@ import java.util.List;
 
 @RestController
 @RequestMapping(path="api/v1/student") //instead of going to localhost 8080 it is going to go to localhost8080/api/v1/student
-public class StudentController {
+public class    StudentController {
 
     private final StudentService studentService;
 
-    @Autowired  //the upper private final StudentService is autowired to resolve deoendency injection in the below method,that's why we used @Service (like @Component or @Bean, but @Service is better for readability) over the StudentService class
+    @Autowired  //the upper private final StudentService is autowired to resolve dependency injection in the below method,that's why we used @Service (like @Component or @Bean, but @Service is better for readability) over the StudentService class
     public StudentController(StudentService studentService) {
         this.studentService = studentService;
     }
