@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping(path="api/v1/student") //instead of going to localhost 8080 it is gonna go to localhost8080/api/v1/student
+@RequestMapping(path="api/v1/student") //instead of going to localhost 8080 it is going to go to localhost8080/api/v1/student
 public class StudentController {
 
     private final StudentService studentService;

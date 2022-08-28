@@ -3,15 +3,15 @@ package com.example.demo.student;
 import javax.persistence.*;
 import java.time.LocalDate;
 
-@Entity  //for hibernate
-@Table  // for the table in database
+@Entity(name = "Student")  //for hibernate--> default name is the class name, but just to clarify name ="Student"
+@Table  // for the table in database, define unique constraints here
 public class Student {
 
-    @Id
-    @SequenceGenerator(
+    @Id         // to signify that the id is our primary key in the database table (students)
+    @SequenceGenerator(                             // this sequence is for the id generated for the students
             name ="student_sequence",
             sequenceName="student_sequence",
-            allocationSize= 1
+            allocationSize= 1                       //this is the increment value of the id, the start value is default=(1) since it isn't identified here
     )
     @GeneratedValue(
             strategy = GenerationType.SEQUENCE,
@@ -26,6 +26,7 @@ public class Student {
     public Student() {
     }
 
+    // to specify specific attributes for each column in the table eg:name, use the annotation @Column
     public Student(Long id, String name, String email, LocalDate dob, Integer age) {
         this.id = id;
         this.name = name;
