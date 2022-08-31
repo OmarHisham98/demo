@@ -24,7 +24,7 @@ public class StudentService {
 
     public void addNewStudent(Student student) {
         Optional<Student> studentOptional = studentRepository.
-                findStudentByEmail(student.getEmail());
+                findOneByEmail(student.getEmail());
         if(studentOptional.isPresent()){
             throw new IllegalStateException("email taken please insert another email");
         }
@@ -53,7 +53,7 @@ public class StudentService {
                 email.length()>0 &&
                 !Objects.equals(student.getEmail(),email)){
             Optional<Student> studentOptional =
-                    studentRepository.findStudentByEmail(email);
+                    studentRepository.findOneByEmail(email);
             if(studentOptional.isPresent()){
                 throw new IllegalStateException("email isn't available");
             }
