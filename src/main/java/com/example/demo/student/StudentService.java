@@ -1,5 +1,6 @@
 package com.example.demo.student;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -8,6 +9,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
+@JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
 @Service
 public class StudentService {
 
@@ -60,5 +62,14 @@ public class StudentService {
             student.setEmail(email);
         }
 
+    }
+
+    public Student getStudent(Long studentId) {
+        boolean exists = studentRepository.existsById(studentId);
+        if(!exists){
+            throw new IllegalStateException("Student "+ studentId +"does not exist");
+        }
+
+            return studentRepository.findById(studentId).get();
     }
 }

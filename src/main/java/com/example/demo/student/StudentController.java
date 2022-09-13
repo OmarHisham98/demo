@@ -1,13 +1,17 @@
 package com.example.demo.student;
 
 
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping(path="api/v1/student") //instead of going to localhost 8080 it is going to go to localhost8080/api/v1/student
+@RequestMapping(path="api/v1/student") //instead of going to localhost 8080 it is going to go to localhost:8080/postgres/api/v1/student
 public class    StudentController {
 
     private final StudentService studentService;
@@ -17,9 +21,15 @@ public class    StudentController {
         this.studentService = studentService;
     }
 
-    @GetMapping
+    @GetMapping(path="/")
     public List<Student> getStudents(){
         return studentService.getStudents();
+    }
+
+    @GetMapping(path="/{studentId}")
+    @Operation(summary = "gets Student by ID",description = "Pls provide an ID")
+    public Student getStudent(@Parameter(name="Student with an id not a batch of students", required=true) @PathVariable long studentId){
+        return studentService.getStudent( studentId);
     }
 
     @PostMapping
