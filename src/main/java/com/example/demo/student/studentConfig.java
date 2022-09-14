@@ -35,7 +35,7 @@ public class studentConfig {
           Student ahmed = new Student(
                 "Ahmed",
                 "ahmed@gg.com",
-                LocalDate.of(1999,Month.OCTOBER ,28));
+                LocalDate.of(1990,Month.OCTOBER ,28));
           repository.saveAll(
                   List.of(omar,ahmed)
           );

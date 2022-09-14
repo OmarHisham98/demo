@@ -5,6 +5,7 @@ import org.hibernate.Hibernate;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.time.Period;
 import java.util.Objects;
 
 @Setter @Getter @NoArgsConstructor
@@ -41,6 +42,10 @@ public class Student {
 
     public void setDob(LocalDate dob) {
         this.dob = dob;
+    }
+
+    public Integer getAge(){
+        return Period.between(this.dob,LocalDate.now()).getYears();
     }
 
     @Override
