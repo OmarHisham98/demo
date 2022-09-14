@@ -28,7 +28,7 @@ public class    StudentController {
 
     @GetMapping(path="/{studentId}")
     @Operation(summary = "gets Student by ID",description = "Pls provide an ID")
-    public Student getStudent(@Parameter(name="Student with an id not a batch of students", required=true) @PathVariable long studentId){
+    public Student getStudent(@Parameter(name="gets a single student with the specified ID", required=true) @PathVariable long studentId){
         return studentService.getStudent( studentId);
     }
 
