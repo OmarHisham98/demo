@@ -1,14 +1,16 @@
 package com.example.demo.student;
 
 import lombok.*;
+import org.hibernate.Hibernate;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.Objects;
 
 @Setter @Getter @NoArgsConstructor
 @Entity(name = "Student")  //for hibernate--> default name is the class name, but just to clarify name ="Student"
 @Table  // for the table in database, define unique constraints here
-@Data
+@AllArgsConstructor
 public class Student {
 
     @Id         // to signify that the id is our primary key in the database table (students)
@@ -50,5 +52,18 @@ public class Student {
                 ", dob=" + dob +
                 ", age=" + age +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
+        Student student = (Student) o;
+        return id != null && Objects.equals(id, student.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return getClass().hashCode();
     }
 }

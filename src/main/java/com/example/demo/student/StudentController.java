@@ -1,8 +1,8 @@
 package com.example.demo.student;
 
+//import io.swagger.annotations.ApiOperation;
+//import io.swagger.annotations.ApiParam;
 
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiParam;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import org.springframework.beans.factory.annotation.Autowired;
